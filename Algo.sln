@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CyclicRotation", "CyclicRot
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeComplexity", "TimeComplexity\TimeComplexity.csproj", "{4BA0B820-4940-46D1-8151-46587012BA6E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrefixSums", "PrefixSums\PrefixSums.csproj", "{FC5B6209-9EDA-47DF-8553-2E27CBF26002}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{4BA0B820-4940-46D1-8151-46587012BA6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BA0B820-4940-46D1-8151-46587012BA6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BA0B820-4940-46D1-8151-46587012BA6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC5B6209-9EDA-47DF-8553-2E27CBF26002}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC5B6209-9EDA-47DF-8553-2E27CBF26002}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC5B6209-9EDA-47DF-8553-2E27CBF26002}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC5B6209-9EDA-47DF-8553-2E27CBF26002}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

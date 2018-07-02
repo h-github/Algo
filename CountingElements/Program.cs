@@ -31,35 +31,50 @@ namespace CountingElements
 
     }
 
+
     public static int[] MaxCounters(int N, int[] A)
     {
       int[] answer = new int[N];
-      int max = 0;
-      int maxToAdd = 0;
-      foreach (int elem in A)
-      {
-        if (elem <= N)
-        {
-          if(answer[elem - 1] < maxToAdd)
-            answer[elem - 1] = maxToAdd + 1;
-          else
-            answer[elem - 1]++;
+      Dictionary<int, int> maxes = new Dictionary<int, int>();
 
-          max = answer[elem - 1] > max ? answer[elem - 1] : max;
-        }
-        else
+      for(int i = 0; i < A.Length; i++)
+      {
+        if(A[i] > N)
         {
-          maxToAdd += max;
+          maxes.Add(i, A[i]);
         }
       }
 
-      for (int i = 0; i < answer.Length; i++)
+      for(int i = 0; i< N; i++)
       {
-        answer[i] = answer[i] < maxToAdd ? maxToAdd : answer[i];
+
       }
 
       return answer;
     }
+
+    //public static int[] MaxCounters(int N, int[] A)
+    //{
+    //  int[] answer = new int[N];
+    //  int max = 0;
+    //  foreach (int elem in A)
+    //  {
+    //    if (elem <= N)
+    //    {
+    //      answer[elem - 1]++;
+    //      max = answer[elem - 1] > max ? answer[elem - 1] : max;
+    //    }
+    //    else
+    //    {
+    //      for (int i = 0 ; i < answer.Length ; i++)
+    //      {
+    //        answer[i] = max;
+    //      }
+    //    }
+    //  }
+
+    //  return answer;
+    //}
 
     //public static int[] MaxCounters(int N, int[] A)
     //{
@@ -85,7 +100,7 @@ namespace CountingElements
     //{
     //  int answer = -1;
     //  var sortedA = A.Distinct().OrderBy(n => n).Where(n => n > 0).ToArray();
-    //  if(sortedA.Length > 0)
+    //  if (sortedA.Length > 0)
     //  {
     //    for (int i = 0; i < sortedA.Length; i++)
     //    {
@@ -95,7 +110,7 @@ namespace CountingElements
     //        break;
     //      }
     //    }
-    //    if(answer == -1)
+    //    if (answer == -1)
     //    {
     //      answer = sortedA.Max() + 1;
     //    }
@@ -170,4 +185,4 @@ namespace CountingElements
     //  return (initialLength == sortedA.Length && sortedA[sortedA.Length - 1] == initialLength) ? 1 : 0;
     //}
   }
-  }
+}
