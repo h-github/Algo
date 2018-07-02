@@ -11,12 +11,6 @@ namespace PrefixSums
     static void Main(string[] args)
     {
       int[] A = new int[] { 0, 1, 0, 1, 1 };
-      //List<int> A = new List<int>();
-      //Random r = new Random();
-      //for (Int64 i = 0; i < 1000000000; i++)
-      //{
-      //  A.Add(r.Next(0, 2));
-      //}
       int answer = PassingCars(A);
     }
 
