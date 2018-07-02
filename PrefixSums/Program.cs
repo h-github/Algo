@@ -10,6 +10,15 @@ namespace PrefixSums
   {
     static void Main(string[] args)
     {
+
+    }
+
+
+    public static int PassingCars(int[] A)
+    {
+      int answer = 0;
+
+      return answer;
     }
   }
 }
