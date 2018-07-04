@@ -34,6 +34,7 @@ namespace PrefixSums
         { 'G', 3 },
         { 'T', 4 }
       };
+
       char[] minimals = new char[P.Length];
       int[] intMinimals = new int[P.Length];
 
