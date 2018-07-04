@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,51 +19,56 @@ namespace PrefixSums
       int[] Q = new int[] { 4, 5, 6 };
       string S = "CAGCCTA";
 
+      //int[] P = new int[] { 0, 0, 1 };
+      //int[] Q = new int[] { 0, 1, 1 };
+      //string S = "CC";
       var answer = GenomicRangeQuery(S, P, Q);
     }
 
     public static int[] GenomicRangeQuery(string S, int[] P, int[] Q)
     {
-      int[] minimals = new int[P.Length];
-      int[] impacts = new int[S.Length];
-
-      for (int i = 0; i < S.Length; i++)
+      Dictionary<char, int> map = new Dictionary<char, int>
       {
-        int impact = 0;
+        { 'A', 1 },
+        { 'C', 2 },
+        { 'G', 3 },
+        { 'T', 4 }
+      };
+      char[] minimals = new char[P.Length];
+      int[] intMinimals = new int[P.Length];
 
-        switch (S[i])
+      if (S.ToCharArray().Distinct().Count() == 1)
+      {
+        char single = S.ToCharArray().Distinct().First();
+        intMinimals = Enumerable.Repeat(map[single], P.Length).ToArray();
+      }
+      else
+      {
+        int n = S.Length;
+        string[] arrayS = new string[n + 1];
+
+        arrayS[0] = string.Empty;
+
+        for (int i = 1; i < n + 1; i++)
         {
-          case 'A':
-            impact = 1;
-            break;
-          case 'C':
-            impact = 2;
-            break;
-          case 'G':
-            impact = 3;
-            break;
-          case 'T':
-            impact = 4;
-            break;
+          arrayS[i] = arrayS[i - 1] + S[i - 1];
         }
 
-        impacts[i] = impact;
+        for (int i = 0; i < P.Length; i++)
+        {
+          int pElm = P[i];
+          int qElm = Q[i];
+          string strP = arrayS[pElm];
+          string strQ = arrayS[qElm + 1];
+          string result = pElm != 0 ? strQ.Substring(strP.Length) : strQ;
+          char minimal = result.Min();
+          minimals[i] = minimal;
+        }
+        intMinimals = minimals.Select(m => map[m]).ToArray<int>();
       }
 
-      if(impacts.Distinct().Count() == 1)
-      {
-        int elem = impacts.Distinct().First();
-        return Enumerable.Repeat(elem, P.Length).ToArray();
-      }
-
-      for (int i = 0; i < P.Length; i++)
-      {
-        int min = P[i] <= Q[i] ? P[i] : Q[i];
-        int max = P[i] >= Q[i] ? P[i] : Q[i];
-        minimals[i] = impacts.Skip(min).Take(max - min + 1).Min();
-      }
-
-      return minimals;
+      
+      return intMinimals;
 
     }
 
