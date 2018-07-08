@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeComplexity", "TimeCompl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrefixSums", "PrefixSums\PrefixSums.csproj", "{FC5B6209-9EDA-47DF-8553-2E27CBF26002}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chees", "Chees\Chees.csproj", "{50E816EF-A809-4ACE-9EF4-5B3BA3C9457F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{FC5B6209-9EDA-47DF-8553-2E27CBF26002}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC5B6209-9EDA-47DF-8553-2E27CBF26002}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC5B6209-9EDA-47DF-8553-2E27CBF26002}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50E816EF-A809-4ACE-9EF4-5B3BA3C9457F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50E816EF-A809-4ACE-9EF4-5B3BA3C9457F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50E816EF-A809-4ACE-9EF4-5B3BA3C9457F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50E816EF-A809-4ACE-9EF4-5B3BA3C9457F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

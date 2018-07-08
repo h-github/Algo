@@ -10,6 +10,9 @@ namespace PrefixSums
   {
     static void Main(string[] args)
     {
+      bool isIt = IsPalindrome("honda");
+      isIt = IsPalindrome("civic");
+
       //int[] A = new int[] { 0, 1, 0, 1, 1 };
       //int answer = PassingCars(A);
 
@@ -22,6 +25,11 @@ namespace PrefixSums
       //int[] P = new int[] { 0, 0, 1 };
       //int[] Q = new int[] { 0, 1, 1 };
       //string S = "CC";
+
+      //int[] P = new int[] { 0, 0, 1 };
+      //int[] Q = new int[] { 0, 1, 1 };
+      //string S = "AC";
+
       var answer = GenomicRangeQuery(S, P, Q);
     }
 
@@ -37,24 +45,27 @@ namespace PrefixSums
 
       char[] minimals = new char[P.Length];
       int[] intMinimals = new int[P.Length];
-
-      if (S.ToCharArray().Distinct().Count() == 1)
+      int n = S.Length;
+      string[] arrayS = new string[n + 1];
+      arrayS[0] = string.Empty;
+      char track = S[0];
+      bool isRepeated = true;
+      for (int i = 1; i < n + 1; i++)
       {
-        char single = S.ToCharArray().Distinct().First();
-        intMinimals = Enumerable.Repeat(map[single], P.Length).ToArray();
+        if (isRepeated && track != S[i - 1])
+        {
+          isRepeated = false;
+        }
+
+        arrayS[i] = arrayS[i - 1] + S[i - 1];
+      }
+
+      if (isRepeated)
+      {
+        intMinimals = Enumerable.Repeat(map[S[0]], P.Length).ToArray();
       }
       else
       {
-        int n = S.Length;
-        string[] arrayS = new string[n + 1];
-
-        arrayS[0] = string.Empty;
-
-        for (int i = 1; i < n + 1; i++)
-        {
-          arrayS[i] = arrayS[i - 1] + S[i - 1];
-        }
-
         for (int i = 0; i < P.Length; i++)
         {
           int pElm = P[i];
@@ -62,16 +73,22 @@ namespace PrefixSums
           string strP = arrayS[pElm];
           string strQ = arrayS[qElm + 1];
           string result = pElm != 0 ? strQ.Substring(strP.Length) : strQ;
-          char minimal = result.Min();
+          char minimal = result.Distinct().Min();
           minimals[i] = minimal;
         }
         intMinimals = minimals.Select(m => map[m]).ToArray<int>();
+
       }
-
-      
       return intMinimals;
-
     }
+
+    public static bool IsPalindrome(string word)
+    {
+      char[] wordArray = word.ToCharArray().Reverse().ToArray();
+      string reversed = string.Join("", wordArray);
+      return reversed.Equals(word);
+    }
+
 
     //public static int CountDiv(int A, int B, int K)
     //{
